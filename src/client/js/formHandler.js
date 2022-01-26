@@ -1,3 +1,11 @@
+export function onFocus() {
+    document.getElementById('name').style.backgroundColor = "yellow";
+}
+
+export function onBlur() {
+    document.getElementById('name').style.backgroundColor = "";
+}
+
 export function handleSubmit(event) {
     event.preventDefault()
 
@@ -38,33 +46,58 @@ export function handleSubmit(event) {
     }
 }
 
-    // const getLang = (baseURL, requestOptions)=>{
-    //     console.log("1");
-    //     let data;
-    //     const res = fetch(baseURL, requestOptions)
-    //         .then(res => ({
-    //             const data = res.json();
-    //             console.log(data);
-    //             // ;
-    //             // status: res.status,
-    //             // body: res.json()
-    //         }))
-//            .then({status, body} => console.log(status, body))
-        // try {
-        //     const data = res.json();
-        //     console.log(data);
-        //     return data;
-        // }  catch(error) {
-        //     console.log("3");
-        //     console.log("error", error);
-        //     // appropriately handle the error
-        // }
-    // }
+export function handleSubmit2(event) {
+    event.preventDefault()
 
-export function onFocus() {
-    document.getElementById('name').style.backgroundColor = "yellow";
-}
+    let baseURL = "https://api.meaningcloud.com/deepcategorization-1.0";
 
-export function onBlur() {
-    document.getElementById('name').style.backgroundColor = "";
+    // check what text was put into the form field
+    let formText  = document.getElementById('name').value
+    let modelText = document.getElementById('models').value
+
+    const isValid = Client.checkForInput(formText);
+
+    const formdata = new FormData();
+    // formdata.append("key", process.env.API_KEY);
+    //console.log(`Your API key is ${API_KEY1}`);
+    formdata.append("key", API_KEY1);
+    formdata.append("txt", formText);
+    formdata.append("model", modelText);  // like IAB_2.0_en
+
+    const requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    console.log(requestOptions);
+    console.log("::: Form Submitted :::")
+
+    if (isValid) {
+        fetch(baseURL, requestOptions)
+            .then(res => res.json())
+            .then(function (res) {
+                // Object.entries(res).forEach(([key, value]) => {
+                //     console.log(`${key}: ${value}`);
+                // });
+                // const newdatas = res;
+                // newdatas.forEach((newdata) => {
+                //     //console.log(`{$repo.name} has ${repo.stargazers_count} stars`);
+                // });
+                // newdatas.forEach((newdata) => {
+                //     Object.entries(repo).forEach(([key, value]) => {
+                //         console.log(`${key}: ${value}`);
+                //     });
+                // });
+                console.log(res);
+                const code = res.category_list[0].code;
+                const name = res.category_list[0].label;
+                const relev = res.category_list[0].relevance;
+                //postData('/addHistory', {language: lang, relevance: relev})
+                document.getElementById('results').innerHTML = res.category_list[0].label;
+            })
+            .catch(error => console.log('error', error));
+    } else {
+        alert('Please enter a URL first!');
+    }
 }

@@ -2,13 +2,14 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
+        <title>Deep Categorization</title>
     </head>
 
     <body>
 
         <header>
             <div class="">
+                <img src="./images/NLP.jpeg" alt="NLP" style="width:100px;height:100px;">
             </div>
             <div id="navbar">
                 <div class= "hdnavbar" id="home"><a href="index.html">Home</a></div>
@@ -20,11 +21,21 @@
 
         <main>
             <section>
-                <H1>Language Identification</H1>
-                <p>Language Identification automatically detects the language of texts obtained from any source.</p>
-                <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onfocus="Client.onFocus()" onblur="Client.onBlur()" placeholder="Phrase">
-                    <input id="subBtn" type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                <H1>Deep Categorization</H1>
+                <p>Deep Categorization is MeaningCloud's solution for in-depth rule-based categorization. It assigns one or more categories to a text,
+                    using a very detailed rule-based language that allows you to identify very specific scenarios and patterns using a combination of
+                    morphological, semantic and text rules.
+                    In the below text box, enter a URL and the API will return the categories this website belongs to</p>
+                <form class="" onsubmit="return Client.handleSubmit2(event)">
+                    <input id="name" type="text" name="input" value="" onfocus="Client.onFocus()" onblur="Client.onBlur()" placeholder="url">
+                    <label for="Model">Choose a Model:</label>
+
+                    <select name="Model" id="models">
+                        <option value="iab1">IAB_2.0</option>
+                        <option value="iab2">IAB_2.0-tier3</option>
+                        <option value="iab3">IAB_2.0-tier4</option>
+                    </select>
+                    <input id="subBtn" type="submit" name="" value="submit" onclick="return Client.handleSubmit2(event)" onsubmit="return Client.handleSubmit2(event)">
                 </form>
             </section>
 
