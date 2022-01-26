@@ -1,3 +1,5 @@
+$primary-color: burlywood;
+
 body {
     display: flex;
     flex-direction: column;
@@ -6,9 +8,37 @@ body {
 
 main {
     flex: 2;
+    background-color: $primary-color;
 }
 
 section {
     max-width: 800px;
     margin: 50px auto;
+}
+
+h1 {
+    font-family: arial, sans-serif;
+    color: rgba(21, 40, 162, 0.72);
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 1px;
+}
+
+h2 {
+    font-family: arial, sans-serif;
+    color: rgb(255, 136, 0);
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 1px;
+}
+
+h3 {
+    font-family: arial, sans-serif;
+    color: rgba(47, 162, 21, 0.72);
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 1px;
 }

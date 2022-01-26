@@ -3,6 +3,8 @@ const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const dotenv = require('dotenv');
+const Dotenv = require('dotenv-webpack')
+
 dotenv.config();
 
 module.exports = {
@@ -32,6 +34,10 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
+        new HtmlWebPackPlugin({
+            template: "./src/client/views/NLP2.html",
+            filename: "./NLP2.html",
+        }),
         new webpack.DefinePlugin( {
             API_KEY1: JSON.stringify(process.env.API_KEY)
         }),
@@ -43,6 +49,7 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
-        })
+        }),
+        new Dotenv()
     ]
 }

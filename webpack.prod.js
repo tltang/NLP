@@ -28,6 +28,19 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.(jpe?g|png)$/i,
+                use: [
+                    {loader: 'file-loader',
+                        options: {
+                            name: '/images/[name].[ext]'
+                        }
+                    }
+                    // ,
+                    // {loader: 'extract-loader'},
+                    // {loader: 'ref-loader'},
+                ]
             }
         ]
     },
@@ -36,9 +49,28 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
+        new HtmlWebPackPlugin({
+            template: "./src/client/views/NLP2.html",
+            filename: "./NLP2.html",
+        }),
         new webpack.DefinePlugin( {
            API_KEY1: JSON.stringify(process.env.API_KEY)
         }),
         new MiniCssExtractPlugin({filename: '[name].css'})
     ]
 }
+const rules = [
+    {
+        test: /\.jpeg$/,
+        use: [{ loader: 'file-loader'}]
+    }
+    // ,
+    // {
+    //     test: /\.html$/,
+    //     use: [
+    //         {loader: 'file-loader'},
+    //         {loader: 'extract-loader'},
+    //         {loader: 'ref-loader'},
+    //     ]
+    // }
+];

@@ -10,3 +10,15 @@ input {
     line-height: 16px;
     margin: 10px 0;
 }
+
+#subBtn {
+    background: teal;
+    color: white;
+
+    &:hover {
+        background:aqua;
+    }
+    &:visited {
+        background: fuchsia;
+    }
+}

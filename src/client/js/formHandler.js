@@ -9,8 +9,8 @@ export function handleSubmit(event) {
 
     const formdata = new FormData();
     // formdata.append("key", process.env.API_KEY);
-    console.log(`Your API key is ${API_KEY1}`);
-    formdata.append("key", 'ac87b3c4a9c2a7be5f31812df5ecf2c3');
+    //console.log(`Your API key is ${API_KEY1}`);
+    formdata.append("key", API_KEY1);
     formdata.append("txt", formText);
 
     const requestOptions = {
