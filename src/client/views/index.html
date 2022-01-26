@@ -28,6 +28,7 @@
                     <input id="name" type="text" name="input" value="" onfocus="Client.onFocus()" onblur="Client.onBlur()" placeholder="Phrase">
                     <input id="subBtn" type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
+                <div class="LoadImage"></div>
             </section>
 
             <section>
@@ -39,6 +40,12 @@
         <footer>
             <p>Footer</p>
         </footer>
-
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
     </body>
 </html>
