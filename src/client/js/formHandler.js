@@ -1,4 +1,5 @@
 import {updateUI} from "./formPost";
+import {checkForURL} from "./nameChecker";
 
 export function onFocus() {
     document.getElementById('name').style.backgroundColor = "yellow";
@@ -69,7 +70,7 @@ export function handleSubmit2(event) {
     let formText  = document.getElementById('name').value
     let modelText = document.getElementById('models').value
 
-    const isValid = Client.checkForInput(formText);
+    const isValid = Client.checkForURL(formText);
     console.log(formText);
     console.log(modelText);
     console.log(API_KEY1);

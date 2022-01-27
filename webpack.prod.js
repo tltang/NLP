@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const TerserPlugin = require("terser-webpack-plugin")
 const WorkboxPlugin = require("workbox-webpack-plugin")
+const CopyPlugin = require("copy-webpack-plugin")
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -30,16 +31,6 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-            },
-            {
-                test: /\.(jpe?g|png)$/i,
-                use: [
-                    {loader: 'file-loader',
-                        options: {
-                            name: '/images/[name].[ext]'
-                        }
-                    }
-                ]
             }
         ]
     },
@@ -55,6 +46,9 @@ module.exports = {
         new webpack.DefinePlugin( {
            API_KEY1: JSON.stringify(process.env.API_KEY)
         }),
+        new CopyPlugin([
+            {from: "./src/client/images/NLP.jpg", to: './images/NLP.jpg'}],
+        ),
         new MiniCssExtractPlugin({filename: '[name].css'}),
         new WorkboxPlugin.GenerateSW()
     ]

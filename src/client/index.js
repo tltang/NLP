@@ -1,4 +1,5 @@
 import { checkForInput } from './js/nameChecker'
+import {checkForURL} from './js/nameChecker'
 import { handleSubmit } from './js/formHandler'
 import { handleSubmit2 } from './js/formHandler'
 import { onBlur } from './js/formHandler'
@@ -15,6 +16,7 @@ import './styles/header.scss'
 
 export {
     checkForInput,
+    checkForURL,
     handleSubmit,
     handleSubmit2,
     onBlur,
