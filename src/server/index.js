@@ -48,8 +48,8 @@ app.get('/test', function (req, res) {
 app.get('/ProjData', GetData)
 
 function GetData (req, res) {
-    //console.log('in GetData');
-    //console.log(projectData);
+    console.log('in GetData');
+    console.log(projectData);
     res.send(projectData);
 }
 
@@ -60,12 +60,17 @@ function GetData (req, res) {
 app.post('/addHistory', addHistory )
 
 function addHistory (req, res){
-    newEntry = { temperature: req.body.temperature,
-        feeling: req.body.feeling,
-        date: req.body.date }
+    newEntry = { LanguageNo: req.body.langno,
+                 Language: req.body.language,
+                 relevance: req.body.relevance }
+    // if (req.body.langno === 0) {
+    //     for (const key in projectData) {
+    //         delete projectData[key];
+    //     }
+    // }
     Object.assign(projectData, newEntry);
     res.send(projectData);
     //projectData.push(newEntry);
-    // console.log(req.body)
-    //console.log(projectData)
+    console.log("i am in addhist")
+    console.log(projectData)
 }

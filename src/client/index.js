@@ -5,6 +5,7 @@ import { onBlur } from './js/formHandler'
 import { onFocus } from './js/formHandler'
 import {postData} from "./js/formPost";
 import {updateUI} from "./js/formPost";
+import {updateUI2} from "./js/formPost";
 
 import './styles/resets.scss'
 import './styles/base.scss'
@@ -19,7 +20,8 @@ export {
     onBlur,
     onFocus,
     postData,
-    updateUI
+    updateUI,
+    updateUI2
 }
 //console.log(checkForInput);
 

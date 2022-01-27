@@ -1,3 +1,5 @@
+import {updateUI} from "./formPost";
+
 export function onFocus() {
     document.getElementById('name').style.backgroundColor = "yellow";
 }
@@ -34,11 +36,23 @@ export function handleSubmit(event) {
         fetch(baseURL, requestOptions)
             .then(res => res.json())
             .then(function (res) {
-                console.log(res);
-                const lang = res.language_list[0].name;
-                const relev = res.language_list[0].relevance;
-                //postData('/addHistory', {language: lang, relevance: relev})
-                document.getElementById('results').innerHTML = res.language_list[0].name;
+                const newdatas = res.language_list;
+                let i1 = 0;
+                newdatas.forEach((newdata) => {
+                    let lang    = newdata.name;
+                    let relev   = newdata.relevance;
+                    i1++;
+
+                    Client.postData('/addHistory', {
+                        langno: i1,
+                        language: lang,
+                        relevance: relev
+                    })
+                    // Object.entries(newdata).forEach(([key, value]) => {
+                    //     console.log(`${key}: ${value}`);
+                    // });
+                });
+                Client.updateUI()
             })
             .catch(error => console.log('error', error));
     } else {
@@ -56,12 +70,14 @@ export function handleSubmit2(event) {
     let modelText = document.getElementById('models').value
 
     const isValid = Client.checkForInput(formText);
-
+    console.log(formText);
+    console.log(modelText);
+    console.log(API_KEY1);
     const formdata = new FormData();
     // formdata.append("key", process.env.API_KEY);
     //console.log(`Your API key is ${API_KEY1}`);
     formdata.append("key", API_KEY1);
-    formdata.append("txt", formText);
+    formdata.append("url", formText);
     formdata.append("model", modelText);  // like IAB_2.0_en
 
     const requestOptions = {
@@ -77,24 +93,26 @@ export function handleSubmit2(event) {
         fetch(baseURL, requestOptions)
             .then(res => res.json())
             .then(function (res) {
-                // Object.entries(res).forEach(([key, value]) => {
-                //     console.log(`${key}: ${value}`);
-                // });
-                // const newdatas = res;
-                // newdatas.forEach((newdata) => {
-                //     //console.log(`{$repo.name} has ${repo.stargazers_count} stars`);
-                // });
-                // newdatas.forEach((newdata) => {
-                //     Object.entries(repo).forEach(([key, value]) => {
-                //         console.log(`${key}: ${value}`);
-                //     });
-                // });
                 console.log(res);
-                const code = res.category_list[0].code;
-                const name = res.category_list[0].label;
-                const relev = res.category_list[0].relevance;
-                //postData('/addHistory', {language: lang, relevance: relev})
-                document.getElementById('results').innerHTML = res.category_list[0].label;
+                const newdatas = res.category_list;
+                let i1 = 0;
+                newdatas.forEach((newdata) => {
+                    let code    = newdata.code;
+                    let name    = newdata.label;
+                    let relev   = newdata.relevance;
+                    i1++;
+
+                    Client.postData('/addHistory', {
+                        categoryno: i1,
+                        code: code,
+                        label: name,
+                        relevance: relev
+                    })
+                    // Object.entries(newdata).forEach(([key, value]) => {
+                    //     console.log(`${key}: ${value}`);
+                    // });
+                });
+                Client.updateUI2()
             })
             .catch(error => console.log('error', error));
     } else {

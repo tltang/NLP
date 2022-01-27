@@ -32,20 +32,23 @@
             </section>
 
             <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+                <strong>Form Results:</strong><br>
+                <label for="Language">Language:</label>
+                <div id="Language"></div>
+                <label for="Relevance">Relevance:</label>
+                <div id="Relevance"></div>
             </section>
         </main>
 
         <footer>
             <p>Footer</p>
         </footer>
-        <script>
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/service-worker.js');
-                });
-            }
-        </script>
+<!--        <script>-->
+<!--            if ('serviceWorker' in navigator) {-->
+<!--                window.addEventListener('load', () => {-->
+<!--                    navigator.serviceWorker.register('/service-worker.js');-->
+<!--                });-->
+<!--            }-->
+<!--        </script>-->
     </body>
 </html>

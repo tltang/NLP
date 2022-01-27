@@ -21,27 +21,32 @@
 
         <main>
             <section>
-                <H1>Deep Categorization</H1>
-                <p>Deep Categorization is MeaningCloud's solution for in-depth rule-based categorization. It assigns one or more categories to a text,
+                <H1>Deep Categorization</H1><br>
+                <p><h3>Deep Categorization is MeaningCloud's solution for in-depth rule-based categorization. It assigns one or more categories to a text,
                     using a very detailed rule-based language that allows you to identify very specific scenarios and patterns using a combination of
                     morphological, semantic and text rules.
-                    In the below text box, enter a URL and the API will return the categories this website belongs to</p>
+                    In the below text box, enter a URL and the API will return the categories this website belongs to</h3></p>
                 <form class="" onsubmit="return Client.handleSubmit2(event)">
                     <input id="name" type="text" name="input" value="" onfocus="Client.onFocus()" onblur="Client.onBlur()" placeholder="url">
                     <label for="Model">Choose a Model:</label>
 
                     <select name="Model" id="models">
-                        <option value="iab1">IAB_2.0</option>
-                        <option value="iab2">IAB_2.0-tier3</option>
-                        <option value="iab3">IAB_2.0-tier4</option>
+                        <option value="IAB_2.0">IAB_2.0</option>
+                        <option value="IAB_2.0-tier3">IAB_2.0-tier3</option>
+                        <option value="IAB_2.0-tier4">IAB_2.0-tier4</option>
                     </select>
                     <input id="subBtn" type="submit" name="" value="submit" onclick="return Client.handleSubmit2(event)" onsubmit="return Client.handleSubmit2(event)">
                 </form>
             </section>
 
             <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+                <strong>Form Results:</strong><br>
+                <label for="Code">Code:</label>
+                <div id="Code"></div>
+                <label for="Label">Label:</label>
+                <div id="Label"></div>
+                <label for="Relevance2">Relevance:</label>
+                <div id="Relevance2"></div>
             </section>
         </main>
 
