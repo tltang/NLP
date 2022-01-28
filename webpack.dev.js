@@ -4,6 +4,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const dotenv = require('dotenv');
 const Dotenv = require('dotenv-webpack')
+const CopyPlugin = require("copy-webpack-plugin");
 
 dotenv.config();
 
@@ -26,16 +27,6 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
-            },
-            {
-                test: /\.(jpe?g|png)$/i,
-                use: [
-                    {loader: 'file-loader',
-                        options: {
-                            name: '/images/[name].[ext]'
-                        }
-                    }
-                ]
             }
         ]
     },
@@ -48,6 +39,9 @@ module.exports = {
             template: "./src/client/views/NLP2.html",
             filename: "./NLP2.html",
         }),
+        new CopyPlugin([
+            {from: "./src/client/images/NLP.jpg", to: './images/NLP.jpg'}],
+        ),
         new webpack.DefinePlugin( {
             API_KEY1: JSON.stringify(process.env.API_KEY)
         }),

@@ -11,8 +11,9 @@ This project requires you to create a NLP project uses various webpack features,
 
 Instructions
 - to run with webpack dev server, type "npm run build-dev-server"
-- to run in production mode, type "npm run start"
-- to run in dev mode, type "npm run build-dev" (if for some reason you do not want to trigger the dev server)
+- to build in dev mode, type "npm run build-dev" (if for some reason you do not want to trigger the dev server)
+- to build in production mode, type "npm run build-prod"
+- to run the app on port 8081, type "npm run start"
 
 ## Special Installation notes:
 - Since this project uses some webpack 4 features which are depreciated, 

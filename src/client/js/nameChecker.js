@@ -1,5 +1,5 @@
 export function checkForInput(inputText) {
-    console.log("::: Running checkForInput :::", inputText);
+    // console.log("::: Running checkForInput :::", inputText);
     if (inputText === "") {
         return false;
     } else
@@ -9,7 +9,7 @@ export function checkForInput(inputText) {
 }
 
 export function checkForURL(inputText) {
-    console.log("::: Running checkForURL :::", inputText);
+    // console.log("::: Running checkForURL :::", inputText);
     let url;
 
     try {

@@ -1,15 +1,11 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-// Setup empty JS object to act as endpoint for all routes
-projectData = {};
-
 const bodyParser = require('body-parser');
 const path = require('path')
 
 // Require Express to run server and routes
 const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
 const apiKey = process.env.API_KEY;
 
 // Start up an instance of app
@@ -38,39 +34,3 @@ app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
 
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
-})
-
-// GET Route I: Server Side
-// There should be a GET route setup on the server side with the first argument as a string naming the route,
-// and the second argument a callback function to return the JS object created at the top of server code.
-app.get('/ProjData', GetData)
-
-function GetData (req, res) {
-    console.log('in GetData');
-    console.log(projectData);
-    res.send(projectData);
-}
-
-// POST Route
-// The server side function should create a new entry in the apps endpoint
-// (the named JS object) consisting of the data received from the client side POST.
-
-app.post('/addHistory', addHistory )
-
-function addHistory (req, res){
-    newEntry = { LanguageNo: req.body.langno,
-                 Language: req.body.language,
-                 relevance: req.body.relevance }
-    // if (req.body.langno === 0) {
-    //     for (const key in projectData) {
-    //         delete projectData[key];
-    //     }
-    // }
-    Object.assign(projectData, newEntry);
-    res.send(projectData);
-    //projectData.push(newEntry);
-    console.log("i am in addhist")
-    console.log(projectData)
-}
