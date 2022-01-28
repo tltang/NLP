@@ -34,21 +34,7 @@ export function handleSubmit(event) {
 
     if (isValid) {
         Client.createLanguageTable();
-        fetch(baseURL, requestOptions)
-            .then(res => res.json())
-            .then(function (res) {
-                const newdatas = res.language_list;
-                let i1 = 0;
-                newdatas.forEach((newdata) => {
-                    let lang    = newdata.name;
-                    let relev   = newdata.relevance;
-                    i1++;
-
-                    // console.log("append data");
-                    Client.appendLanguage(i1, lang, relev);
-                });
-            })
-            .catch(error => console.log('error', error));
+        Client.fetchLanguage(baseURL, requestOptions);
     } else {
         alert('Please enter a phrase first!');
     }
@@ -83,23 +69,7 @@ export function handleSubmit2(event) {
 
     if (isValid) {
         Client.createCategoryTable();
-        fetch(baseURL, requestOptions)
-            .then(res => res.json())
-            .then(function (res) {
-                // console.log(res);
-                const newdatas = res.category_list;
-                let i1 = 0;
-                newdatas.forEach((newdata) => {
-                    let code    = newdata.code;
-                    let name    = newdata.label;
-                    let relev   = newdata.relevance;
-                    i1++;
-
-                    // console.log("append data2");
-                    Client.appendCategory(i1, code, name, relev);
-                });
-            })
-            .catch(error => console.log('error', error));
+        Client.fetchCategory(baseURL, requestOptions);
     } else {
         alert('Please enter a URL first!');
     }
@@ -110,6 +80,7 @@ export function createLanguageTable()  {
     let tableHeaders = ["Language#", "Language", "Relevance"]
 
     while (scoreDiv.firstChild) scoreDiv.removeChild(scoreDiv.firstChild) // Remove all children from scoreboard div (if any)
+
     let scoreboardTable = document.createElement('table') // Create the table itself
     scoreboardTable.className = 'scoreboardTable'
     let scoreboardTableHead = document.createElement('thead') // Creates the table header group element
@@ -135,7 +106,6 @@ export function appendLanguage(langNo, language1, relev1) {
     const scoreboardTable = document.querySelector('.scoreboardTable') // Find the table we created
     let scoreboardTableBodyRow = document.createElement('tr') // Create the current table row
     scoreboardTableBodyRow.className = 'scoreboardTableBodyRow'
-// Lines 72-85 create the 5 column cells that will be appended to the current table row
     let langNoData = document.createElement('td')
     langNoData.innerText = langNo
     let langData = document.createElement('td')
@@ -176,7 +146,6 @@ export function appendCategory(CategoryNo, code1, name1, relev1) {
     const scoreboardTable = document.querySelector('.scoreboardTable') // Find the table we created
     let scoreboardTableBodyRow = document.createElement('tr') // Create the current table row
     scoreboardTableBodyRow.className = 'scoreboardTableBodyRow'
-// Lines 72-85 create the 5 column cells that will be appended to the current table row
     let categoryNoData = document.createElement('td')
     categoryNoData.innerText = CategoryNo
     let codeData = document.createElement('td')

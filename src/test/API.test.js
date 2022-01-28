@@ -1,30 +1,23 @@
-// This is the function we'll be testing
-async function withFetch() {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts')
-    const json = await res.json()
+// Import the js file to test
+import { fetchLanguage } from '../client/js/API'
+import { fetchCategory } from '../client/js/API'
 
-    return json
-}
+// The describe() function takes two arguments - a string description, and a test suite as a callback function.
+// A test suite may contain one or more related tests
+// per Udacity knowledge base 757333, rather than trying to
+// figure out the jest config and test mocking fetch functions, I will just test if these functions exist
+describe("Testing the API functionalities exist", () => {
+    // The test() function has two arguments - a string description, and an actual test as a callback function.
 
-// This is the section where we mock `fetch`
-const unmockedFetch = global.fetch
-
-beforeAll(() => {
-    global.fetch = () =>
-        Promise.resolve({
-            json: () => Promise.resolve([]),
-        })
-})
-
-afterAll(() => {
-    global.fetch = unmockedFetch
-})
-
-// This is actual testing suite
-describe('withFetch', () => {
-    test('works', async () => {
-        const json = await withFetch()
-        expect(Array.isArray(json)).toEqual(true)
-        expect(json.length).toEqual(0)
+    // function fetchLanguage
+    test('verify fetchLanguage exist', () => {
+        expect(fetchLanguage).toBeDefined();
     })
-})
+
+    // function fetchCategory
+    test('verify fetchCategory exist', () => {
+        expect(fetchCategory).toBeDefined();
+    })
+
+});
+

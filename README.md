@@ -14,6 +14,7 @@ Instructions
 - to build in dev mode, type "npm run build-dev" (if for some reason you do not want to trigger the dev server)
 - to build in production mode, type "npm run build-prod"
 - to run the app on port 8081, type "npm run start"
+- to run jest, type "npm run test"
 
 ## Special Installation notes:
 - Since this project uses some webpack 4 features which are depreciated, 
@@ -32,9 +33,3 @@ Tsai-Ting Wang
 ##Credits
 Base Version is provided by Udacity
 
-- Parse the response body to dynamically fill content on the page.
-- Test that the server and form submission work, making sure to also handle error responses if the user input does not match API requirements. 
-
-## Deploying
-
-A great step to take with your finished project would be to deploy it! Unfortunately its a bit out of scope for me to explain too much about how to do that here, but checkout [Netlify](https://www.netlify.com/) or [Heroku](https://www.heroku.com/) for some really intuitive free hosting options.
